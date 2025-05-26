@@ -58,8 +58,44 @@ public:
 #include <conio.h>
 #include "Cabinet.h"
 
+Cabinet::Cabinet() {
+    IGame* demo_game = new RockPaperScissors();
+    IGame* demo_game_2 = new RockPaperScissors();
+    games.push_back(demo_game);
+    games.push_back(demo_game_2);
+}
 void Cabinet::hw_check() {
+<<<<<<< Updated upstream
 	printf("[%s] Cabinet 전원 체크, 롬 체크 등\n", cabinet_model_str);
+=======
+    printf("[%s] Cabinet 전원 체크, 롬 체크 등\n", cabinet_model_str);
+}
+
+
+
+void Cabinet::load_game() {
+    int idx = 0;
+    std::cout << "게임 선택. 방향키로 게임을 골라보세요. \n";
+    while (true) {
+        int key = (get_key_code());
+        if (key == KEY_ENTER) //ENTER
+            break;
+        else if ((key == KEY_LEFT) || (key == KEY_DOWN)) {
+            idx = (idx == 0) ? (2-1) : idx - 1; //게임목록 2일떄
+        }
+        else if ((key == KEY_UP) || (key == KEY_RIGHT)) {
+            //idx++;
+            idx = (idx == (2 - 1)) ? 0 : idx + 1;
+        }
+        //std::cout << idx << "번 게임 선택하시겠습니까? 선택하려면 ENTER를 누르세요. \n";
+        std::cout << "\r " << idx << "번 게임 선택하시겠습니까? 선택하려면 ENTER를 누르세요." << std::flush;
+
+    }
+	std::cout << "\n";
+    IGame* selectedGame = games[idx];
+    installed_game = selectedGame;
+
+>>>>>>> Stashed changes
 }
 
 void Cabinet::load_game(IGame* game) {
@@ -103,8 +139,37 @@ void Cabinet::intro(int init_coins) {
     std::cout << "  1조 게임기를 즐기러 오신 당신을 환영합니다!\n";
     std::cout << "============================================\n";
     std::cout << "\n";
+<<<<<<< Updated upstream
 	std::cout << "코인 추가: c" << "\n";
     std::cout << "게임 선택: p" << "\n";
+=======
+    std::cout << "코인 추가: c" << "\n";
+    std::cout << "게임 선택: p" << "\n";
+
+    while (true) {
+        if (_kbhit()) {
+            char key = _getch();
+            if (key == 'c' || key == 'C') {
+                this->coin++;
+                //std::cout << "현재 코인 갯수: " << this->coin << "\n";
+                std::cout << "\r " << "현재 코인 갯수" << this->coin << std::flush;
+                continue;
+            }
+            else if (key == 'p' || key == 'P') {
+                break;
+            }
+            else {
+                std::cout << "잘못된 입력입니다.\n";
+            }
+        }
+    }
+	std::cout << "\n";
+}
+
+void Cabinet::clearScreen() {
+    Sleep(10);
+    printf("\033[2J\033[H"); // ANSI Escape Code로 화면 지우기
+>>>>>>> Stashed changes
 
     while (true) {
         if (_kbhit()) {

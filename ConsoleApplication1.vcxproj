@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Cabinet.cpp" />
     <ClCompile Include="GameRegistry.cpp" />
+    <ClCompile Include="key.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RockPaperScissors.cpp" />
   </ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="Cabinet.h" />
     <ClInclude Include="CabinetRegistry.h" />
     <ClInclude Include="IGame.h" />
+    <ClInclude Include="key.h" />
     <ClInclude Include="RockPaperScissors.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

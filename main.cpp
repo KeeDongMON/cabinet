@@ -6,8 +6,8 @@
 
 
 // 4. 실행 예시
-#include "Cabinet.h"
-#include "RockPaperScissors.h"
+//#include "Cabinet.h"
+//#include "RockPaperScissors.h"
 
 int main() {
     Cabinet cabinet;
@@ -16,9 +16,10 @@ int main() {
     //초기화면
     while (cabinet.offCheck()) {
         cabinet.intro(0); // 코인갯수 0
-        //코인인풋
-        cabinet.coin_input();
         cabinet.clearScreen();
+        //코인인풋
+        //cabinet.coin_input();
+        
         //게임선택
         //cabinet.getGame(); //    RockPaperScissors* game = new RockPaperScissors();  //TicTacToe* game = new TicTacToe();
         cabinet.load_game(); // cabinet.load_game(game);
