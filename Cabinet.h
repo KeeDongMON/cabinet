@@ -27,30 +27,31 @@ public:
 
 #pragma once
 #include "IGame.h"
-#include "RockPaperScissors.h"
+#include <cstdint>
 #include <vector>
+#include <Windows.h>
 
 class Cabinet {
     const char* cabinet_model_str = "캐비닛 R123";
     IGame* installed_game = nullptr;
-	std::vector<IGame*> games; // 게임 목록
+    std::vector<IGame*> games;
     bool is_running = false;
-    int coin = 0;
+    //bool power_on = true; // 전원 상태
 
 public:
-    Cabinet() {
-		IGame* demo_game = new RockPaperScissors();
-        IGame* demo_game_2 = new RockPaperScissors();
-        games.push_back(demo_game);
-		games.push_back(demo_game_2);
-    }
     void hw_check();
     void load_game(IGame* game);
+    void load_game();
     void unload_game();
     void game_init();
     void game_start();
-	void intro(int init_coins);
-	void clearScreen();
-	void getGame();
     bool offCheck();
+    //void init();
+    void intro(int init_coins);
+    void coin_input();
+    void clearScreen();
+    void getGame();
 };
+
+
+
